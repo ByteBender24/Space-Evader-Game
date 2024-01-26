@@ -36,21 +36,27 @@ def main():
     while run:
 
         clock.tick(60) #framerate = 60
-        
+
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 run = False
                 break
         
         keys = pygame.key.get_pressed()
-        if keys[pygame.K_LEFT]:
+
+        if keys[pygame.K_LEFT] and (player.x - PLAYER_VEL >= 0) : # to check the boundaries by adding guard conditionals
             player.x -= PLAYER_VEL
-        if keys[pygame.K_RIGHT]:
+
+        # to check the boundaries by adding guard conditionals
+        if keys[pygame.K_RIGHT] and (player.x + PLAYER_VEL + player.width <= WIDTH):
             player.x += PLAYER_VEL
-        if keys[pygame.K_UP]:
+
+        if keys[pygame.K_UP] and (player.y + PLAYER_VEL >= 0):
+            print(player.y + player.height + PLAYER_VEL)
             player.y -= PLAYER_VEL
-        if keys[pygame.K_DOWN]:
-                    player.y += PLAYER_VEL
+
+        if keys[pygame.K_DOWN] and (player.y + PLAYER_VEL + player.height <= HEIGHT):
+            player.y += PLAYER_VEL
         draw(player)
 
         
