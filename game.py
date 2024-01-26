@@ -29,13 +29,14 @@ def main():
 
     run = True
 
-    player = pygame.Rect(WIDTH//2 - PLAYER_WIDTH, HEIGHT - PLAYER_HEIGHT,
-                         PLAYER_WIDTH, PLAYER_HEIGHT)
+    player = pygame.Rect(WIDTH//2 - PLAYER_WIDTH, HEIGHT - PLAYER_HEIGHT, PLAYER_WIDTH, PLAYER_HEIGHT)  # to center the player on x axis -> WIDTH//2 - PLAYER_WIDTH , to make the player on base -> HEIGHT - PLAYER_HEIGHT
     
-    # to center the player on x axis -> WIDTH//2 - PLAYER_WIDTH
-    # to make the player on base -> HEIGHT - PLAYER_HEIGHT
-    
+    clock = pygame.time.Clock()
+
     while run:
+
+        clock.tick(60) #framerate = 60
+        
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 run = False
